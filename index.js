@@ -11,6 +11,12 @@ var mainRouter = require('./routes/general.router');
 
 /* =========== Some Initialize stuff =============== */
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    // console.log("body", req.body);
+    next();
+});
+
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(  '/', mainRouter);
