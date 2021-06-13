@@ -13,9 +13,11 @@ var mainRouter = require('./routes/general.router');
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // console.log("body", req.body);
     next();
 });
+
 
 app.use(bodyParser.json());
 app.use(express.json());
@@ -23,6 +25,8 @@ app.use(  '/', mainRouter);
 
 /* =========== FROM HERE =============== */
 
-app.listen(port, hostname, () => {
+/*app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
-});
+});*/
+
+module.exports = app;

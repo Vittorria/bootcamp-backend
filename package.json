@@ -2,9 +2,16 @@
   "name": "my-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --max-old-space-size=16384 ./bin/www.js -V",
+    "pkg": {
+      "assets": [
+        "node_modules/**/*",
+        "./conf.json"
+      ],
+      "scripts": "build/**/*.js"
+    }
   },
   "keywords": [],
   "author": "",
@@ -15,7 +22,10 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.6.1",
     "pg": "^8.3.0",
+    "pkg": "^5.2.1",
     "require.js": "^1.0.0"
   }
 }

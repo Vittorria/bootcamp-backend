@@ -3,10 +3,14 @@ var router = express.Router();
 var model = require("../lib/general.model");
 
 
+router.get('/volunteers-no', function (req, res, next) {
+    model.getVolunteersNo(req, res);
+});
+
 /** =========== GET /register - registers a new user ===========*/
 
-router.get('/table', function (req, res, next) {
-    model.getTable(req, res);
+router.post('/volunteers/add', function (req, res, next) {
+    model.registerNewUser(req, res);
 });
 
 
@@ -20,17 +24,6 @@ router.get('/register/sync/:username/:fullname/:email/:psw/:inviterId', function
     model.registerNewUser(req, res);
 });
 
-
-/** =========== DELETE /delete-user/:userId - returns the balance history of a given user ===========*/
-router.get('/delete/:username', function (req, res, next) {
-    model.deleteRecord(req, res);
-    // model.syncronizeDelete(req, res);
-
-});
-
-router.get('/delete/sync/:username', function (req, res, next) {
-    model.deleteRecord(req, res);
-});
 
 module.exports = router;
 
